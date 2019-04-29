@@ -21,7 +21,7 @@ spec:
         imagePullPolicy: Never
         readinessProbe:
           httpGet:
-            path: /vehicles
+            path: /healthz
             port: 8080
 ---
 apiVersion: v1

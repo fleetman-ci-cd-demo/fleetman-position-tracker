@@ -18,35 +18,41 @@ import com.virtualpairprogrammers.tracker.domain.VehicleNotFoundException;
 import com.virtualpairprogrammers.tracker.domain.VehiclePosition;
 
 @RestController
-public class PositionReportsController 
+public class PositionReportsController
 {
 	@Autowired
 	private Data data;
-	
+
 	@RequestMapping(method=RequestMethod.GET,value="/vehicles/{vehicleName}")
 	public ResponseEntity<VehiclePosition> getLatestReportForVehicle(@PathVariable String vehicleName)
 	{
-		try 
+		try
 		{
 			VehiclePosition position = data.getLatestPositionFor(vehicleName);
 			return new ResponseEntity<VehiclePosition>(position, HttpStatus.OK);
-		} 
-		catch (VehicleNotFoundException e) 
+		}
+		catch (VehicleNotFoundException e)
 		{
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	
+
 	@RequestMapping(method=RequestMethod.GET, value="/history/{vehicleName}")
 	public Collection<VehiclePosition> getEntireHistoryForVehicle(@PathVariable String vehicleName) throws VehicleNotFoundException
 	{
 		return this.data.getHistoryFor(vehicleName);
 	}
-	
+
 	@RequestMapping(method=RequestMethod.GET, value="/vehicles/")
 	public Collection<VehiclePosition> getUpdatedPositions(@RequestParam(value="since", required=false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Date since)
 	{
 		Collection<VehiclePosition> results = data.getLatestPositionsOfAllVehiclesUpdatedSince(since);
 		return results;
+	}
+
+	@RequestMapping(method=RequestMethod.GET, value="/healthz")
+	public String healthCheck()
+	{
+		return "OK";
 	}
 }
