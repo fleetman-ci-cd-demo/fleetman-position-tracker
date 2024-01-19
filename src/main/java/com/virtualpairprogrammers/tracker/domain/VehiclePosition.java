@@ -3,11 +3,11 @@ package com.virtualpairprogrammers.tracker.domain;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
+
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -86,12 +86,6 @@ public class VehiclePosition implements Comparable<VehiclePosition>
 
 	public BigDecimal getSpeed() {
 		return this.speed;
-	}
-
-	@Override
-	public String toString() {
-		return "VehiclePosition [name=" + name + ", lat=" + lat + ", longitude=" + longitude + ", timestamp="
-				+ timestamp + ", speed=" + speed + "]";
 	}
 
 }

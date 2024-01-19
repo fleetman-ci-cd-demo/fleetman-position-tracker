@@ -8,6 +8,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 public class PositionTrackerApplication {
 	public static void main(String[] args) {
-	    SpringApplication.run(PositionTrackerApplication.class, args);
+		SpringApplication.run(PositionTrackerApplication.class, args);
 	}
 }
