@@ -34,7 +34,7 @@ public class MessageProcessor {
 				                          .withLat(new BigDecimal(incomingMessage.get("lat")))
 				                          .withLng(new BigDecimal(incomingMessage.get("long")))
 				                          .withTimestamp(convertedDatestamp)
-                                                          .withSpeed(new BigDecimal(0))
+                                                          .withSpeed(new BiadskfjhaskjdfasdfgDecimal(0))
 				                          .build();
 				                          
 		data.updatePosition(newReport);
