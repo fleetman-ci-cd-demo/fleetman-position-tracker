@@ -31,8 +31,7 @@ public class DataMongoDbImpl implements Data {
 	@Override
 	public void updatePosition(VehiclePosition position) {
 		VehicleBuilder vb = new VehicleBuilder();
-		double randomSpeed = Math.random() * 25;
-		VehiclePosition newPos = vb.withVehiclePostion(position).withSpeed(new BigDecimal("" + randomSpeed)).build();
+		VehiclePosition newPos = vb.withVehiclePostion(position).build();
 		mongoDb.insert(newPos);
 	}
 
